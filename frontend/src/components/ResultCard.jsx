@@ -1,5 +1,6 @@
 // One recommended issue. Reads fields straight from the response JSON.
-export default function ResultCard({ issue }) {
+// defaultOpen = true shows the "First steps" section already expanded.
+export default function ResultCard({ issue, defaultOpen = false }) {
   // Badge colour classes come from the value, e.g. "badge diff-easy"
   const diffClass = `badge diff-${issue.difficulty.toLowerCase()}`;
   const healthClass = `badge health-${issue.health.label.toLowerCase()}`;
@@ -8,7 +9,7 @@ export default function ResultCard({ issue }) {
     <div className="card">
       <div className="card-top">
         <span className="badge platform">{issue.platform}</span>
-                <span className="fit">
+        <span className="fit">
           Fit {issue.fit_score}/100
           <span className="fit-bar"><span style={{ width: `${issue.fit_score}%` }} /></span>
         </span>
@@ -35,7 +36,7 @@ export default function ResultCard({ issue }) {
       </ul>
 
       {/* <details> gives us expand/collapse with no extra code */}
-      <details>
+      <details open={defaultOpen}>
         <summary>First steps</summary>
         <ol>
           {issue.first_steps.map((step, i) => (

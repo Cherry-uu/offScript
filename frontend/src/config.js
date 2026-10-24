@@ -12,3 +12,5 @@ export const PLATFORMS = [
 ];
 // Set to false while developing so you don't have to log in every refresh.
 export const REQUIRE_LOGIN = true;
+// Set to false while developing so the intro doesn't play on every refresh.
+export const SHOW_INTRO = true;

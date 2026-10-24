@@ -1,6 +1,7 @@
-// 
 import { useState } from "react";
 import Starfield from "./components/Starfield";
+import GlobeBackground from "./components/GlobeBackground";
+import Intro from "./components/Intro";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import AuthPage from "./components/AuthPage";
@@ -9,33 +10,35 @@ import ResultCard from "./components/ResultCard";
 import RejectedPanel from "./components/RejectedPanel";
 import Comparison from "./components/Comparison";
 import { fetchRecommendations } from "./api";
-import { REQUIRE_LOGIN } from "./config";
+import { REQUIRE_LOGIN, SHOW_INTRO } from "./config";
 import "./App.css";
 
 // Top level: decides which page to show and holds the search + login state.
 export default function App() {
-    // Start on the login page when login is required
-  const [page, setPage] = useState(REQUIRE_LOGIN ? "auth" : "landing"); // "landing" | "auth" | "finder"// "landing" | "auth" | "finder"
-  const [user, setUser] = useState(null);      // logged-in email, or null
+  // Start on the login page when login is required
+  const [page, setPage] = useState(REQUIRE_LOGIN ? "auth" : "landing"); // "landing" | "auth" | "finder"
+  const [user, setUser] = useState(null);   // logged-in email, or null
+  const [intro, setIntro] = useState(false); // the intro animation plays only after login
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Go to a page. Opening the finder while logged out sends you to login.
-    function go(target) {
-    const needsLogin = target === "finder" && REQUIRE_LOGIN && !user;
-    setPage(needsLogin ? "auth" : target);
+  // Go to a page. Logged-out visitors can only see the login page.
+  function go(target) {
+    setPage(REQUIRE_LOGIN && !user ? "auth" : target);
   }
 
   function handleLogin(email) {
     setUser(email);
-        setPage("landing"); // landing page opens right after login
+    setPage("landing"); // landing page opens right after login
+    if (SHOW_INTRO) setIntro(true); // play the logo animation on top of it
   }
 
   function handleLogout() {
     setUser(null);
     setData(null);
-        setPage("auth");
+    setIntro(false);
+    setPage("auth");
   }
 
   async function handleSearch(query) {
@@ -53,7 +56,15 @@ export default function App() {
   return (
     <>
       <Starfield />
-            <Navbar page={page} user={user} locked={REQUIRE_LOGIN && !user} onNavigate={go} onLogout={handleLogout} />
+      <GlobeBackground />
+      <Navbar
+        page={page}
+        user={user}
+        locked={REQUIRE_LOGIN && !user}
+        introActive={intro}
+        onNavigate={go}
+        onLogout={handleLogout}
+      />
 
       {page === "landing" && <Landing onStart={() => go("finder")} />}
       {page === "auth" && <AuthPage onSuccess={handleLogin} />}
@@ -80,6 +91,9 @@ export default function App() {
           )}
         </div>
       )}
+
+      {/* Intro animation sits on top of everything until it finishes */}
+      {intro && <Intro onDone={() => setIntro(false)} />}
     </>
   );
 }
