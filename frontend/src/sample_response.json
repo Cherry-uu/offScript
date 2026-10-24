@@ -1,0 +1,54 @@
+{
+  "profile": {
+    "languages": ["Python", "JavaScript"],
+    "level": "beginner",
+    "interests": ["web", "automation"],
+    "summary": "Beginner comfortable with Python scripts and basic JavaScript."
+  },
+  "results": [
+    {
+      "platform": "github",
+      "id": "octo/docs-tool#42",
+      "title": "Fix typo in installation guide",
+      "url": "https://github.com/octo/docs-tool/issues/42",
+      "repo": "octo/docs-tool",
+      "labels": ["good first issue", "documentation"],
+      "body": "The install section has a wrong command.",
+      "language": "Python",
+      "assignee": null,
+      "comments": [],
+      "linked_prs": [],
+      "last_activity": "2026-10-20",
+      "difficulty": "Easy",
+      "difficulty_reason": "Only one markdown file needs a small text change.",
+      "fit_score": 92,
+      "why_fit": ["Matches your Python background", "Small change, good first PR"],
+      "health": { "score": 88, "label": "Active", "signals": {} },
+      "first_steps": ["Fork the repo", "Open docs/install.md", "Fix the command and open a PR"]
+    },
+    {
+      "platform": "gitlab",
+      "id": "acme/cli#17",
+      "title": "Add --verbose flag to CLI",
+      "url": "https://gitlab.com/acme/cli/-/issues/17",
+      "repo": "acme/cli",
+      "labels": ["help wanted"],
+      "body": "Add a verbose option.",
+      "language": "Python",
+      "assignee": null,
+      "comments": [],
+      "linked_prs": [],
+      "last_activity": "2026-10-15",
+      "difficulty": "Medium",
+      "difficulty_reason": "Touches argument parsing and logging.",
+      "fit_score": 74,
+      "why_fit": ["Uses Python you already know", "Teaches CLI basics"],
+      "health": { "score": 55, "label": "Slow", "signals": {} },
+      "first_steps": ["Read cli/main.py", "Add the flag", "Write one test"]
+    }
+  ],
+  "rejected": [
+    { "title": "Update logo", "url": "https://github.com/octo/site/issues/9", "platform": "github", "reason": "claimed_in_comment", "detail": "A user commented \"I'll take this\" 2 days ago." },
+    { "title": "Add dark mode", "url": "https://github.com/octo/app/issues/31", "platform": "github", "reason": "has_open_pr", "detail": "Open PR #33 already links to this issue." }
+  ]
+}

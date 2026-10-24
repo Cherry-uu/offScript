@@ -1,0 +1,28 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap");
+
+html { background: #050b12; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #e6f1f5;
+  font-family: "Manrope", system-ui, sans-serif;
+  background: radial-gradient(ellipse at 50% 0%, #0a1f27 0%, #050b12 55%, #03070b 100%);
+  background-attachment: fixed;
+}
+#root { position: relative; z-index: 1; }
+h1, h2, h3 { letter-spacing: -0.01em; }
+a { color: #5eead4; } */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+html { background: #050b12; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: 18px; /* Garamond runs small, so we scale it up */
+  color: #e6f1f5;
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  background: radial-gradient(ellipse at 50% 0%, #0a1f27 0%, #050b12 55%, #03070b 100%);
+  background-attachment: fixed;
+}
+#root { position: relative; z-index: 1; }
+a { color: #67e8f9; }
