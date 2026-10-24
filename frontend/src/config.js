@@ -1,7 +1,5 @@
-// One place to change the backend address and switch between mock and real data.
-export const API_BASE_URL = "http://localhost:8000";
-export const USE_MOCK = true; // set to false once Vibha's backend is ready
-
+export const API_BASE_URL = "http://localhost:5000";
+export const USE_MOCK = false;
 // Platforms shown as checkboxes. "id" is what we send to /api/recommend.
 export const PLATFORMS = [
   { id: "github", label: "GitHub" },
